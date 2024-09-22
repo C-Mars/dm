@@ -1,0 +1,100 @@
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>Perfil</ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+
+
+    <div class="ion-padding">
+      <div>
+        <ion-button shape="round" id="open-modal" color="warning">
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-button>     
+      </div>
+      <div class="ion-padding">
+        
+        <ion-thumbnail >
+          <img alt="foto perfil"  src="../../../assets/images/logo-mascotas-07.png" />
+        </ion-thumbnail>
+        <ion-button shape="round" id="">
+          <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+        </ion-button> 
+      </div>
+    <div class="ion-padding">
+      <ion-title color="secondary">{{ ajustesForm.get('nombre')?.value + ' ' + ajustesForm.get('apellido')?.value }}</ion-title>
+    </div>
+    </div>
+    <div class="ion-padding">
+      <ion-title color="primary">Mascotas</ion-title>
+    </div>
+    <div class="ion-padding">
+      <ion-list class="ion-padding">
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="../../../assets/images/logo-mascotas-08.png"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <ion-title color="primary">Colitas</ion-title>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="../../../assets/images/logo-mascotas-09.png"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <ion-title color="primary">Thor</ion-title>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+    <ion-content class="ion-padding">
+      <ion-modal [keepContentsMounted]="true" trigger="open-modal" #modal>
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="end">
+                <ion-button  (click)="modal.dismiss()">
+                  <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+              <ion-title>Editar perfil</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding"> 
+
+            <form  [formGroup]="ajustesForm" (ngSubmit)="onSubmit()"  class="ion-padding">
+              <ion-list>
+                <ion-item>
+                  <ion-input color="secondary" formControlName="nombre" label="Nombre" labelPlacement="floating"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input formControlName="apellido" label="Apellido" labelPlacement="floating"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input formControlName="email" label="Email" labelPlacement="floating"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input label="Contraseña actual" formControlName="password" type ="password" autocomplete="current-password" labelPlacement="floating">
+                    <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+                  </ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input label="Nueva contraseña" formControlName="password" type ="password" autocomplete="new-password" labelPlacement="floating">
+                    <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+                  </ion-input>
+                </ion-item>
+              </ion-list>
+              <div class="ion-padding">
+                <ion-button  color="tertiary" type="submit" shape="round" strong="true" size="default" (click)="modal.dismiss()" expand="block">Guardar</ion-button>
+              </div>
+            </form>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    
+  </ion-content>
+
+</div>
